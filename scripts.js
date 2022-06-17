@@ -5,36 +5,52 @@
 // adicinar cartas no jogo --> index query //
 let quantidade;
 let cartasNoJogo=[];
-let face =0;
-let jogo = 0;
-
+let carta =0;
+let conjunto=[];
+let i=0;
 
 function StartingGame(){
     let tabuleiro= document.querySelector(".cartasContainer");
-    let carta = document.querySelector(".face");
     // verificar se o usuario colocou a quantidade correto//
     quantidade = Number(prompt("Com quantas cartas quer jogar? Escolha um número de 4 a 14."));
 
     while( quantidade < 4 ||  quantidade > 14 || quantidade % 2 !== 0 || !quantidade ){
         quantidade = Number(prompt(" Por favor escolha um número de 4 a 14."));
     }
-    // colocar cartas no tabuleiro//
-    while(jogo < quantidade){
-        tabuleiro.innerHTML += `<div class="face"></div>`
-        jogo ++
-    }
-        // colocar adiconar cartas no array //
-        while(cartasNoJogo.length !== quantidade){
-            cartasNoJogo.push(face,face);
-            face ++   
-        }
+            // colocar adiconar cartas no array //
+            while(cartasNoJogo.length !== quantidade){
+                cartasNoJogo.push(carta,carta);
+                carta ++   
+            }
+    let cartasEmbaralhadas = cartasNoJogo.sort(comparador);
 
-        cartasNoJogo.sort(comprador);
+
+    // colocar cartas no tabuleiro//
+    while(i < cartasEmbaralhadas.length){
+        conjunto += `<div class="carta">
+        <div class="frente carta">
+            <img src="images/${cartasEmbaralhadas[i]}.gif" alt="">
+        </div>
+        <div class="tras carta">
+            <img src="images/front.png" alt="">
+        </div>
+    </div>`
+        i ++
+    }
+    tabuleiro.innerHTML = conjunto;
+    console.log(cartasEmbaralhadas);
+
+
+}
+StartingGame();
+
+// Função para embaralhar as cartas //
+function comparador() { 
+	return Math.random() - 0.5; 
 }
 
- function comprador(){
-    return Math.random() - 0.5
- }
- 
- StartingGame();
- console.log(cartasNoJogo);
+    
+    
+    
+
+
