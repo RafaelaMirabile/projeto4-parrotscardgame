@@ -19,7 +19,7 @@ h1{
     color: #75B79E;
     margin: 40px 285px 30px 285px;
 }
-.cartaContainer{
+.cartasContainer{
     width: 1000px;
     height: 400px;
     display: flex;
@@ -28,7 +28,7 @@ h1{
     align-items: center;
     border: 2px solid red;
 }
-.carta{
+.face{
     width: 117px;
     height: 146px;
     background: #A7E9AF;
