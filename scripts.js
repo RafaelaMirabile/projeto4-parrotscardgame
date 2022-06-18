@@ -1,16 +1,14 @@
-
-//O usuário só poderá inserir números pares no prompt, de 4 a 14. 
-//o prompt deverá ficar sendo repetido, 
-// adicionar as cartas no arary --> js//
-// adicinar cartas no jogo --> index query //
 let quantidade;
 let cartasNoJogo=[];
 let carta =0;
-let conjunto=[];
+let jogo=[];
 let i=0;
+let jogadas = 0;
+let primeiroClick;
+let segundoClick;
 
 function StartingGame(){
-    let tabuleiro= document.querySelector(".cartasContainer");
+    let jogo= document.querySelector(".cartasContainer");
     // verificar se o usuario colocou a quantidade correto//
     quantidade = Number(prompt("Com quantas cartas quer jogar? Escolha um número de 4 a 14."));
 
@@ -22,24 +20,24 @@ function StartingGame(){
                 cartasNoJogo.push(carta,carta);
                 carta ++   
             }
-    let cartasEmbaralhadas = cartasNoJogo.sort(comparador);
+    
+            let cartasEmbaralhadas = cartasNoJogo.sort(comparador);
 
 
     // colocar cartas no tabuleiro//
     while(i < cartasEmbaralhadas.length){
-        conjunto += `<div class="carta">
-        <div class="frente carta">
-            <img src="images/${cartasEmbaralhadas[i]}.gif" alt="">
-        </div>
-        <div class="tras carta">
+        jogo.innerHTML += `<div class="carta" onclick="virar(this)">
+        <div class="frente face">
             <img src="images/front.png" alt="">
+        </div>
+        <div class="tras face">
+            <img src="images/${cartasEmbaralhadas[i]}.gif" alt="">
         </div>
     </div>`
         i ++
     }
-    tabuleiro.innerHTML = conjunto;
-    console.log(cartasEmbaralhadas);
-
+    console.log(jogo);
+    console.log(cartasNoJogo);
 
 }
 StartingGame();
@@ -49,6 +47,22 @@ function comparador() {
 	return Math.random() - 0.5; 
 }
 
+function virar(cartaClicada){
+
+    if(cartaClicada.classList.contains("virada")){
+        return;
+    }
+    jogadas++;
+
+    cartaClicada.classList.add("virada");
+
+    if(primeiroClick === undefined){
+        primeiroClick = cartaClicada;
+    } else{
+        segundoClick = cartaClicada;
+    }
+
+}
     
     
     

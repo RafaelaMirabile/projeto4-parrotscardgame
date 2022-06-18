@@ -29,41 +29,42 @@ h1{
     border: 2px solid red;
     position: relative;
 }
-.tras.carta{
+.carta {
+    width: 200px;
+    height: 250px;
+    margin: 60px 10px 0 10px;
+    position: relative;
+  }
+.face {
     width: 117px;
     height: 146px;
     background: #A7E9AF;
     border: 1px solid #99CEA8;
     border-radius: 5px;
     margin-right: 14px;
-    transition: all .7s;
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all 0.5s;
     transform-style: preserve-3d;
-    display: initial;
-}
-.frente.carta{
-width: 117px;
-height: 146px;
-background: #A7E9AF;
-border: 1px solid #99CEA8;
-border-radius: 5px;
-margin-right: 14px;
-align-items: center;
-justify-content: center;
-}
-.tras img , .frente img{
+    box-shadow: 1px 2px 2px rgb(3, 99, 32);
+  }
+  img {
+    position: absolute;
     width: 100px;
     height: 100px;
-}
-.tras.carta{
-    position: absolute;
-}
-.carta{
-    display: flex;
-}
-
-.clicada{
+  }
+    
+  .tras {
     transform: rotateY(180deg);
-}
-.none{
-    display: none;
-}
+  }
+  .virada .tras {
+    transform: rotateY(0deg);
+  } 
+  .virada .frente {
+    transform: rotateY(-180deg);
+  }
+  
