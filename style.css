@@ -20,24 +20,21 @@ h1{
     margin: 40px 285px 30px 285px;
 }
 .cartasContainer{
-    width: 1000px;
-    height: 400px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    border: 2px solid red;
     position: relative;
 }
 .carta {
     width: 200px;
     height: 250px;
-    margin: 60px 10px 0 10px;
+    margin: 40px 10px 0 10px;
     position: relative;
   }
 .face {
-    width: 117px;
-    height: 146px;
+    width: 200px;
+    height: 246px;
     background: #A7E9AF;
     border: 1px solid #99CEA8;
     border-radius: 5px;
@@ -53,10 +50,9 @@ h1{
   }
   img {
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 160px;
+    height: 160px;
   }
-    
   .tras {
     transform: rotateY(180deg);
   }
@@ -65,5 +61,10 @@ h1{
   } 
   .virada .frente {
     transform: rotateY(-180deg);
+  }
+  @media screen and (max-width: 767px)  {
+    .cartasContainer{
+      flex-direction: column;
+    }
   }
   
