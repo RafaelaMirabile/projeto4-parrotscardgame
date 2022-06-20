@@ -86,9 +86,15 @@ function desvirar(){
 function fimdeJogo(){
     if (acertos === quantidade){
         alert("Você venceu em " + jogadas + " jogadas");
+        reload();
     }
 }
-
+function reload(){
+    elemento = prompt ("Gostaria de jogar de novo?")
+    if(elemento === 'sim'){
+        window.location.reload();
+    }
+}
 function comparador() { 
 	return Math.random() - 0.5; 
 }
