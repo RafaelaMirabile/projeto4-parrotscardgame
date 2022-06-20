@@ -1,11 +1,11 @@
 let quantidade;
 let cartasNoJogo=[];
 let carta =0;
-let jogo=[];
 let i=0;
 let jogadas = 0;
 let primeiroClick;
 let segundoClick;
+let acertos = 0;
 
 function StartingGame(){
     let jogo= document.querySelector(".cartasContainer");
@@ -36,34 +36,62 @@ function StartingGame(){
     </div>`
         i ++
     }
-    console.log(jogo);
-    console.log(cartasNoJogo);
 
 }
 StartingGame();
 
-// Função para embaralhar as cartas //
-function comparador() { 
-	return Math.random() - 0.5; 
-}
 
 function virar(cartaClicada){
 
-    if(cartaClicada.classList.contains("virada")){
-        return;
+    console.log(cartaClicada.classList);  
+
+    if(cartaClicada.classList.contains("virada") || segundoClick !== undefined){
+        primeiroClick = undefined;
+        segundoClick= undefined;
     }
+    console.log(cartaClicada , "verifica;'ap");
     jogadas++;
+    
+    console.log(jogadas);
 
     cartaClicada.classList.add("virada");
 
     if(primeiroClick === undefined){
         primeiroClick = cartaClicada;
-    } else{
+
+    } else {
         segundoClick = cartaClicada;
+    
+    if (primeiroClick.innerHTML === segundoClick.innerHTML){
+        acertos+= 2;
+        console.log(acertos, "cartaIgual");
+        fimdeJogo();
     }
+    else{
+        setTimeout(desvirar, 1000);
+
+    }  
+}
 
 }
-    
+function desvirar(){
+    primeiroClick.classList.remove("virada");
+    segundoClick.classList.remove("virada");
+    primeiroClick = undefined;
+    segundoClick= undefined;
+    console.log(primeiroClick, "primeira");
+    console.log(segundoClick,  "segunda");
+}
+
+function fimdeJogo(){
+    if (acertos === quantidade){
+        alert("Você venceu em " + jogadas + " jogadas");
+    }
+}
+
+function comparador() { 
+	return Math.random() - 0.5; 
+}
     
     
 
